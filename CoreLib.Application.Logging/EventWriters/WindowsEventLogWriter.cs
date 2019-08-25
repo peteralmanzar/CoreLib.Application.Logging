@@ -53,7 +53,7 @@ namespace CoreLib.Application.Logging.EventWriters
             if (!System.Diagnostics.EventLog.SourceExists(_eventLog.Source)) System.Diagnostics.EventLog.CreateEventSource(_eventLog.Source, _eventLog.Log);
             #endregion
 
-            _eventLog.WriteEntry(value.Details, (EventLogEntryType)value.EventLevel, value.ID);
+            _eventLog.WriteEntry(value.Details, (EventLogEntryType)value.Level, value.ID);
         }
 
         public static void DeleteEventSource(string Name)

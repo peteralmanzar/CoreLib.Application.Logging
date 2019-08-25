@@ -5,7 +5,7 @@
         #region Properties
         int ID { get; }
         string Details { get; }
-        int EventLevel { get; }
+        int Level { get; }
         #endregion
     }
 }
