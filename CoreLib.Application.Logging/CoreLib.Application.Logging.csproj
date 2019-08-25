@@ -1,12 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>peteralmanzar</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Description>Provide simple and extensible framework for application logging</Description>
+    <Description>Provides simple and extensible framework for application logging</Description>
     <PackageTags>simple application logging framework log</PackageTags>
     <Copyright>2019</Copyright>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
