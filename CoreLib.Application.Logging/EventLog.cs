@@ -18,5 +18,14 @@ namespace CoreLib.Application.Logging
 
         }
         #endregion
+
+        public void Log(IEvent @event)
+        {
+            #region Guards
+            if (@event == null) throw new System.ArgumentNullException(nameof(@event));
+            #endregion
+
+            _eventWriters.ForEach(w => w.OnNext(@event));
+        }
     }
 }
