@@ -7,7 +7,7 @@
     <Description>Provides simple and extensible framework for application logging</Description>
     <PackageTags>simple application logging framework log</PackageTags>
     <Copyright>2019</Copyright>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageProjectUrl>https://github.com/peteralmanzar/CoreLib.Application.Logging</PackageProjectUrl>
     <RepositoryUrl>https://github.com/peteralmanzar/CoreLib.Application.Logging</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
