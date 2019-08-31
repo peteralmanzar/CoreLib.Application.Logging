@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CoreLib.Application.Logging.Abstraction
 {
-    public abstract class EventListener : IObservable<IEvent>
+    public abstract class baseEventListener : IObservable<IEvent>
     {
         private class Unsubscriber : IDisposable
         {
@@ -47,7 +47,7 @@ namespace CoreLib.Application.Logging.Abstraction
         #endregion
 
         #region Constructors
-        public EventListener()
+        public baseEventListener()
         {
             _eventWriters = new List<IObserver<IEvent>>();
         }

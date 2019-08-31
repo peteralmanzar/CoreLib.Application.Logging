@@ -5,7 +5,7 @@ using System.IO;
 
 namespace CoreLib.Application.Logging.EventWriters
 {
-    public class WindowsEventLogWriter : EventWriter
+    public class WindowsEventLogWriter : baseEventWriter
     {
         #region Properties
         public string LogName => _eventLog.Log;
@@ -34,14 +34,14 @@ namespace CoreLib.Application.Logging.EventWriters
         #endregion
 
         #region Constructors
-        public WindowsEventLogWriter(string LogName, string SourceName, SourceLevels sourceLevels = SourceLevels.All)
+        public WindowsEventLogWriter(string logName, string sourceName, SourceLevels sourceLevels = SourceLevels.All)
         {
             #region Guards
-            if (string.IsNullOrEmpty(LogName)) LogName = _defaultLogName;
-            if (string.IsNullOrEmpty(SourceName)) LogName = _defaultSourceName;
+            if (string.IsNullOrEmpty(logName)) logName = _defaultLogName;
+            if (string.IsNullOrEmpty(sourceName)) logName = _defaultSourceName;
             #endregion
 
-            _eventLog = new System.Diagnostics.EventLog(LogName, Environment.MachineName, SourceName);
+            _eventLog = new System.Diagnostics.EventLog(logName, Environment.MachineName, sourceName);
         }
         #endregion
 
@@ -56,13 +56,32 @@ namespace CoreLib.Application.Logging.EventWriters
             _eventLog.WriteEntry(value.Details, (EventLogEntryType)value.Level, value.ID);
         }
 
-        public static void DeleteEventSource(string Name)
+        public static void CreateEventSource(string sourceName, string logName)
         {
             #region Guards
-            if (Name == null) throw new ArgumentNullException(nameof(Name));
+            if (string.IsNullOrEmpty(sourceName)) throw new ArgumentException(nameof(sourceName));
+            if (string.IsNullOrEmpty(logName)) throw new ArgumentException(nameof(logName));
             #endregion
 
-            System.Diagnostics.EventLog.DeleteEventSource(Name, Environment.MachineName);
+            System.Diagnostics.EventLog.CreateEventSource(sourceName, logName);
+        }
+
+        public static void DeleteEventSource(string sourceName)
+        {
+            #region Guards
+            if (sourceName == null) throw new ArgumentNullException(nameof(sourceName));
+            #endregion
+            
+            System.Diagnostics.EventLog.DeleteEventSource(sourceName, Environment.MachineName);
+        }
+
+        public static void DeleteLog(string logName)
+        {
+            #region Guards
+            if (logName == null) throw new ArgumentNullException(nameof(logName));
+            #endregion
+
+            if (System.Diagnostics.EventLog.Exists(logName)) System.Diagnostics.EventLog.Delete(logName);
         }
         #endregion
     }

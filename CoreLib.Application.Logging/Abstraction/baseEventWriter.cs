@@ -2,7 +2,7 @@
 
 namespace CoreLib.Application.Logging.Abstraction
 {
-    public abstract class EventWriter : IObserver<IEvent>
+    public abstract class baseEventWriter : IObserver<IEvent>
     {
         #region Members
         protected IDisposable _unsubscriber;

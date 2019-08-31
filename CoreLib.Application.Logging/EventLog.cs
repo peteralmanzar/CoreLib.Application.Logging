@@ -2,7 +2,7 @@
 
 namespace CoreLib.Application.Logging
 {
-    public class EventLog : EventListener
+    public class EventLog : baseEventListener
     {
         #region Properties
         public static EventLog Default;
